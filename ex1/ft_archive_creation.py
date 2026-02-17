@@ -25,7 +25,7 @@ class Utils:
             print(f"\033[38;2;{r};{g};{b}m{message}\033[0m", end=finish)
 
 
-def ft_ancient_text() -> None:
+def ft_archive_creation() -> None:
     file = None
     Utils.Print("=== Initiating protocol SHARK ===",
                 255, 0, 0)
@@ -34,7 +34,7 @@ def ft_ancient_text() -> None:
     try:
         Utils.Print(f"Opening '{sys.argv[1]}'.",
                     195, 215, 0)
-        with open(sys.argv[1], "w") as file:
+        with open(sys.argv[1], "x") as file:
             count = 0
             pos = 0
             for i in sys.argv:
@@ -47,8 +47,8 @@ def ft_ancient_text() -> None:
                 pos += 1
             Utils.Print(f"Text writen with a total of {count} char added.",
                         0, 0, 255)
-    except FileNotFoundError:
-        Utils.error(f"File {sys.argv[1]} not found.")
+    except FileExistsError:
+        Utils.error(f"File {sys.argv[1]} already exists.")
     except IndexError:
         Utils.error(f"No arguments were provided. ./{sys.argv[0]} <file> "
                     "<content to write>")
@@ -57,7 +57,9 @@ def ft_ancient_text() -> None:
             file.close()
             Utils.Print(f"File {sys.argv[1]} was closed on the way out.",
                         195, 215, 0)
+        Utils.Print("=== Ended protocol SHARK ===",
+                    255, 0, 0)
 
 
 if __name__ == "__main__":
-    ft_ancient_text()
+    ft_archive_creation()
