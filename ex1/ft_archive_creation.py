@@ -1,6 +1,3 @@
-import sys
-
-
 class Utils:
     """For colored messages/errors"""
     def error(message: str) -> None:
@@ -27,35 +24,25 @@ class Utils:
 
 def ft_archive_creation() -> None:
     file = None
+    text = "This is a place holder"
     Utils.Print("=== Initiating protocol SHARK ===",
                 255, 0, 0)
     Utils.Print("Pen Experiment and New Isotop Security",
                 125, 0, 0)
     try:
-        Utils.Print(f"Opening '{sys.argv[1]}'.",
+        Utils.Print("Opening 'Text.txt'.",
                     195, 215, 0)
-        with open(sys.argv[1], "x") as file:
+        with open("Text.txt", "x") as file:
             count = 0
-            pos = 0
-            for i in sys.argv:
-                if pos <= 1:
-                    pos += 1
-                    continue
-                count += file.write(f"{i}\n")
-                Utils.Print(f"Log [{pos - 1}] [{i}]",
-                            0, 255, 150)
-                pos += 1
+            count += file.write(text)
             Utils.Print(f"Text writen with a total of {count} char added.",
                         0, 0, 255)
     except FileExistsError:
-        Utils.error(f"File {sys.argv[1]} already exists.")
-    except IndexError:
-        Utils.error(f"No arguments were provided. ./{sys.argv[0]} <file> "
-                    "<content to write>")
+        Utils.error("File Text.txt already exists.")
     finally:
         if file:
             file.close()
-            Utils.Print(f"File {sys.argv[1]} was closed on the way out.",
+            Utils.Print("File Text.txt was closed on the way out.",
                         195, 215, 0)
         Utils.Print("=== Ended protocol SHARK ===",
                     255, 0, 0)

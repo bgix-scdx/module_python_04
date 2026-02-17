@@ -1,6 +1,3 @@
-import sys
-
-
 class Utils:
     """For colored messages/errors"""
     def error(message: str) -> None:
@@ -30,23 +27,20 @@ def ft_archive_creation() -> None:
     Utils.Print("=== Initiating protocol READ ===",
                 255, 0, 0)
     try:
-        Utils.Print(f"Opening '{sys.argv[1]}'.",
+        Utils.Print("Opening 'Text.txt'.",
                     195, 215, 0)
-        with open(sys.argv[1], "r") as file:
+        with open("Text.txt", "r") as file:
             count = 1
             for i in file.readlines():
                 Utils.Print(f"Line {count} | {i.strip()}",
                             0, 255, 150)
                 count += 1
     except FileNotFoundError:
-        Utils.error(f"Error, File {sys.argv[1]} not found.")
-    except IndexError:
-        Utils.error(f"Error, No arguments were provided. ./{sys.argv[0]} "
-                    "<file> <content to read>")
+        Utils.error("Error, File not found.")
     finally:
         if file:
             file.close()
-            Utils.Print(f"File {sys.argv[1]} was closed on the way out.",
+            Utils.Print("File Text.txt was closed on the way out.",
                         195, 215, 0)
     Utils.Print("=== Ended protocol READ ===",
                 255, 0, 0)
