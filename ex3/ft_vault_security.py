@@ -28,13 +28,14 @@ def ft_vault_security() -> None:
     Utils.Print("=== Activating WITH vault ===", 255, 0, 255)
     Utils.Print("Launching program...", 155, 0, 155)
     try:
-        with open("ex3/vault.txt", "r") as vault:
+        with open("vault.txt", "r+") as vault:
             Utils.Print("Vault Openned, showing content.", 205, 0, 205)
             count = 1
             for i in vault:
                 Utils.Print(f"Line {count}: ", 255, 155, 255, "")
                 Utils.Print(i.strip(), 0, 155, 255)
                 count += 1
+            vault.write(f"\nThis is the {count}th line")
         Utils.Print("Content displayed, Vault auto-locking.", 205, 0, 205)
     except FileNotFoundError:
         Utils.Print("Vault not found.", 255, 0, 0)

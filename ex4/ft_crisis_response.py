@@ -28,7 +28,7 @@ def ft_crisis_response() -> None:
     Utils.Print("=== Absolue Bugz ===", 255, 0, 0)
     Utils.Print("Trying to open and access the file", 255, 0, 255)
     try:
-        with open("ex4/Special.txt", "r+") as file:
+        with open("Special.txt", "r+") as file:
             Utils.Print("File has been opened", 0, 255, 155)
             count = 1
             for i in file:
